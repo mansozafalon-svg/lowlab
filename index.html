@@ -256,7 +256,7 @@ footer a:hover{color:var(--cream)}
 }
 
 /* ===== EFEITOS ===== */
-.progress{position:fixed;top:0;left:0;right:0;height:2px;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#8a632e,#f0dcb0);z-index:60;box-shadow:0 0 12px rgba(213,189,145,.6)}
+.progress{position:absolute;left:18px;right:18px;bottom:-1px;height:2px;border-radius:2px;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#8a632e,#f0dcb0);box-shadow:0 0 12px rgba(213,189,145,.7);pointer-events:none}
 nav{animation:navIn 1s cubic-bezier(.2,.8,.2,1) both}
 @keyframes navIn{from{opacity:0;transform:translate(-50%,-30px)}}
 .intro{opacity:0;animation:rise 1s cubic-bezier(.2,.8,.2,1) var(--d,0s) forwards}
@@ -295,16 +295,14 @@ h1.word{display:flex;justify-content:center;perspective:800px}
   .mod:hover{transform:none}
 }
 @media(max-width:700px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(3){padding-left:0;border-left:0}.stat{padding-bottom:20px}.manif{padding:90px 0 70px}}
-@media(prefers-reduced-motion:reduce){.intro,.ch,.chip{opacity:1!important;transform:none!important;filter:none!important}nav{opacity:1!important}.split .w>span,.stagger>*{transform:none!important;opacity:1!important}.manif-text .mw{color:var(--cream)}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
-<div class="progress" id="progress"></div>
 <nav id="nav">
   <a href="#topo" class="logo"><img src="https://lowlab.maurobondanca.chatgpt.site/assets/lowlab-symbol-ui.png" alt="" onerror="this.style.display='none'"><div><b>LOWLAB</b><small>UNIVERSIDADE DIGITAL</small></div></a>
   <div class="links"><a href="#metodo">Método</a><a href="#trilha">Trilha</a><a href="#simule">Simule</a><a href="#circulo">Círculo</a><a href="#planos">Planos</a><a href="#faq">FAQ</a></div>
+  <div class="progress" id="progress"></div>
   <div class="r"><a class="login" href="https://lowlab.maurobondanca.chatgpt.site/">Entrar</a><a class="btn btn-gold" href="#planos">Garantir minha vaga →</a></div>
 </nav>
 
@@ -578,7 +576,7 @@ mt.addEventListener('input',()=>{step(5);calc()});
 calc();
 
 // ===== EFEITOS =====
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduce=false; // efeitos ativos para todos os visitantes
 // imagem do topo: mostra assim que carregar (inclusive do cache)
 const heroImg=document.getElementById('heroImg');if(heroImg.complete)heroImg.classList.add('ok');
 
